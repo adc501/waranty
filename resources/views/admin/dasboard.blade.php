@@ -97,7 +97,7 @@
       <div class="card ">
         <div class="card-header pb-0 p-3">
           <div class="d-flex justify-content-between">
-            <h6 class="mb-2">Data Terbaru</h6>
+            <h6 class="mb-2">Data Barang Terbaru</h6>
           </div>
         </div>
         <div class="table-responsive">
@@ -180,6 +180,114 @@
                           </tr>
                           <tr>
                             <td>{{$data->deskripsi}}</td>
+                          </tr>
+                        </tbody>
+                      </table>                      
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card ">
+        <div class="card-header pb-0 p-3">
+          <div class="d-flex justify-content-between">
+            <h6 class="mb-2">Data User Terbaru</h6>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center ">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Opsi</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @php
+                  $no = 1;
+              @endphp
+              @foreach ($new_user as $data)
+              <tr>
+                <th scope="row" class="px-4">{{$no++}}</th>
+                <td>{{$data->name}}</td>
+                <td>{{$data->email}}</td>    
+                <td>
+                  <a href="" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalUser{{$data->id}}">
+                    <i class="fa fa-search text-white"></i>
+                  </a>
+                </td>
+            </tr>
+              @endforeach
+            </tbody>
+          </table>
+
+          @foreach ($new_user as $data)
+          <div class="modal fade" id="modalUser{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Detail User</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body justify-content-center align-items-center">
+                  <div class="card">
+                    <div class="card-body">
+                      @php
+                        if ($data->pro_img == null) {
+                          $img = asset('/template/assets/img/theme/tim.png');
+                        }else {
+                          $img = asset('/pro_img/'.$data->pro_img);
+                        }
+                      @endphp
+                      <img src="{{$img}}" alt="profile" class="card-img-top">
+                      <table>
+                        <tbody>
+                          <tr class="border-bottom ">
+                            <th scope="row">Username</th>
+                            <td class="px-2">{{$data->name}}</td>
+                          </tr>
+                          <tr class="border-bottom ">
+                            <th scope="row">Email</th>
+                            <td class="px-2">{{$data->email}}</td>
+                          </tr>
+                          <tr class="border-bottom ">
+                            <th scope="row">Role</th>
+                            <td class="px-2">
+                              @if ($data->role == 1)
+                                  Admin
+                              @else
+                                  User
+                              @endif
+                              </td>
+                          </tr>
+                          <tr class="border-bottom ">
+                            <th scope="row">Gender</th>
+                            <td class="px-2">{{$data->gender}}</td>
+                          </tr>
+                          <tr class="border-bottom ">
+                            <th scope="row">Tanggal Lahir</th>
+                            <td class="px-2">{{$data->tanggal_lahir}}</td>
+                          </tr>
+                          <tr class="border-bottom ">
+                            <th scope="row">Alamat</th>
+                            <td class="px-2">{{$data->alamat}}</td>
                           </tr>
                         </tbody>
                       </table>                      

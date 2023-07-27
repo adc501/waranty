@@ -38,7 +38,8 @@ class HomeController extends Controller
         $non = Barang::where('tanggal_berakhir', '<=', date('Y-m-d'));
 
         $new = Barang::where('created_at', 'LIKE', '%'.$today.'%')->get();
+        $new_user = User::where('created_at', 'LIKE', '%'.$today.'%')->get();
 
-        return view('admin.dasboard', compact('users', 'barang', 'aktif', 'non', 'new'));
+        return view('admin.dasboard', compact('users', 'barang', 'aktif', 'non', 'new', 'new_user'));
     }
 }

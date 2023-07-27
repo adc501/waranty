@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-8 text-start mb-5 mt-5">
         <h3 class="text-dark z-index-1 position-relative">Detail Garansi</h3>
-        <p class="text-dark opacity-8 mb-0">Pengguna dapat melihat status garansi barang pengguna serta detail barang</p>
+        <p class="text-dark opacity-8 mb-0">Berikut adalah status masa garansi serta detail barang</p>
       </div>
     </div>
     <div class="row">
